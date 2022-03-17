@@ -1,0 +1,27 @@
+{
+  "name": "galaxy-vr-find",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "dplan",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cheerio": "^1.0.0-rc.10",
+    "dotenv": "^16.0.0",
+    "sqlite": "^4.0.25",
+    "sqlite3": "^5.0.2",
+    "string-similarity": "^4.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.2",
+    "@types/node": "^17.0.21",
+    "@types/string-similarity": "^4.0.0",
+    "ts-node-dev": "^1.1.8"
+  }
+}
