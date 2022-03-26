@@ -24,7 +24,7 @@ async function main() {
     const wmrGames = vrGames.filter((vr: VrGame) => vr.wmr === 'Native support').map((wmr: VrGame) => wmr.title);
     const myWmrGames = titles.map(title => ({
         title,
-        wmr: wmrGames.filter((wmr: string) => compareTwoStrings(title, wmr) > 0.9)
+        wmr: wmrGames.filter((wmr: string) => compareTwoStrings(title, wmr) > 0.8)
     }))
         .filter(wmr => wmr.wmr.length > 0);
     fs.writeFileSync(PATH_OUT_ROOT + "/myWmrGames.json", JSON.stringify(myWmrGames));

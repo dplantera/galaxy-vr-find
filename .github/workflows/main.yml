@@ -28,3 +28,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: releases-action
       uses: nickatnight/releases-action@v2
+      with:
+        branch: main
