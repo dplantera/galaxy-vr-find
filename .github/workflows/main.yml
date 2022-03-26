@@ -1,0 +1,33 @@
+name: Node.js CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Build
+      run: npm ci && npm run build
+    - name: Automated Version Bump
+      if: github.ref == 'refs/heads/main'
+      uses: phips28/gh-action-bump-version@v9.0.13
+      with:
+        minor-wording:  'add,Adds,new,Added'
+        major-wording:  'MAJOR,cut-major,breaking-change'
+        patch-wording:  'patch,fixes,Fixed'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: releases-action
+      uses: nickatnight/releases-action@v2
